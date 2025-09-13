@@ -15,11 +15,16 @@ const buttonVariants = cva(
         secondary: "bg-secondary text-secondary-foreground hover:bg-secondary/80",
         ghost: "hover:bg-accent hover:text-accent-foreground",
         link: "text-primary underline-offset-4 hover:underline",
+        // Investment-specific variants
+        investment: "bg-investment-gold text-investment-gold-foreground hover:bg-gold-light font-semibold shadow-gold transition-premium",
+        hero: "bg-gradient-to-r from-gold-primary to-gold-light text-navy-deep font-bold shadow-investment hover:shadow-gold hover:scale-105 transition-premium",
+        outline_premium: "border-2 border-gold-primary text-gold-primary bg-transparent hover:bg-gold-primary hover:text-navy-deep font-semibold transition-premium",
       },
       size: {
         default: "h-10 px-4 py-2",
         sm: "h-9 rounded-md px-3",
         lg: "h-11 rounded-md px-8",
+        xl: "h-14 rounded-lg px-12 text-lg",
         icon: "h-10 w-10",
       },
     },

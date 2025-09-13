@@ -2,57 +2,68 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+/* VC of One Design System - Sophisticated Investment Intelligence Platform */
 
 @layer base {
   :root {
+    /* Core Investment Palette */
     --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    --foreground: 210 100% 98%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    /* Investment Navy Foundation */
+    --navy-deep: 213 47% 16%;     /* #1E293B - Primary dark navy */
+    --navy-medium: 213 31% 25%;   /* #2D3748 - Medium navy */
+    --navy-light: 213 19% 35%;    /* #4A5568 - Light navy accent */
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    /* Investment Gold Spectrum */
+    --gold-primary: 34 89% 49%;   /* #F59E0B - Primary investment gold */
+    --gold-light: 34 89% 65%;     /* #FBB042 - Light gold hover */
+    --gold-dark: 34 89% 35%;      /* #D97706 - Dark gold accent */
 
-    --primary: 222.2 47.4% 11.2%;
+    /* Gradient Definitions */
+    --gradient-hero: linear-gradient(135deg, hsl(var(--navy-deep)), hsl(var(--gold-dark)));
+    --gradient-section: linear-gradient(180deg, hsl(var(--navy-deep)), hsl(var(--navy-medium)));
+    --gradient-card: linear-gradient(145deg, hsl(var(--navy-medium)), hsl(var(--navy-light)));
+
+    /* Semantic Color System */
+    --primary: var(--navy-deep);
     --primary-foreground: 210 40% 98%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --secondary: var(--navy-medium);
+    --secondary-foreground: 210 40% 98%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: var(--gold-primary);
+    --accent-foreground: 213 47% 16%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --investment-gold: var(--gold-primary);
+    --investment-gold-foreground: 213 47% 16%;
 
-    --destructive: 0 84.2% 60.2%;
+    --muted: 213 19% 35%;
+    --muted-foreground: 213 15% 75%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 213 47% 16%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 213 47% 16%;
+
+    --border: 213 31% 91%;
+    --input: 213 31% 91%;
+    --ring: var(--gold-primary);
+
+    --destructive: 0 84% 60%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --radius: 0.75rem;
 
-    --radius: 0.5rem;
+    /* Investment-specific styling */
+    --shadow-investment: 0 25px 50px -12px hsl(var(--navy-deep) / 0.4);
+    --shadow-gold: 0 8px 32px hsl(var(--gold-primary) / 0.3);
+    --transition-premium: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 
-    --sidebar-background: 0 0% 98%;
-
-    --sidebar-foreground: 240 5.3% 26.1%;
-
-    --sidebar-primary: 240 5.9% 10%;
-
-    --sidebar-primary-foreground: 0 0% 98%;
-
-    --sidebar-accent: 240 4.8% 95.9%;
-
-    --sidebar-accent-foreground: 240 5.9% 10%;
-
-    --sidebar-border: 220 13% 91%;
-
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    /* Typography Scale */
+    --font-display: 'Playfair Display', serif;
+    --font-body: 'Source Sans Pro', sans-serif;
   }
 
   .dark {
@@ -100,6 +111,84 @@ All colors MUST be HSL.
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-body;
+  }
+
+  /* Investment Typography */
+  .font-display {
+    font-family: var(--font-display);
+  }
+
+  .font-body {
+    font-family: var(--font-body);
+  }
+
+  /* Investment Gradients */
+  .bg-gradient-hero {
+    background: var(--gradient-hero);
+  }
+
+  .bg-gradient-section {
+    background: var(--gradient-section);
+  }
+
+  .bg-gradient-card {
+    background: var(--gradient-card);
+  }
+
+  /* Investment Shadows */
+  .shadow-investment {
+    box-shadow: var(--shadow-investment);
+  }
+
+  .shadow-gold {
+    box-shadow: var(--shadow-gold);
+  }
+
+  /* Premium Transitions */
+  .transition-premium {
+    transition: var(--transition-premium);
+  }
+
+  /* Investment Animations */
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .animate-fade-up {
+    animation: fadeUp 0.8s ease-out forwards;
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-20px); }
+  }
+
+  @keyframes fadeUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Deal Flow Visualization */
+  .deal-flow {
+    background: linear-gradient(45deg, 
+      hsl(var(--navy-deep)) 0%, 
+      hsl(var(--navy-medium)) 25%, 
+      hsl(var(--gold-dark)) 50%, 
+      hsl(var(--navy-medium)) 75%, 
+      hsl(var(--navy-deep)) 100%);
+    background-size: 400% 400%;
+    animation: dealFlow 8s ease-in-out infinite;
+  }
+
+  @keyframes dealFlow {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
   }
 }
