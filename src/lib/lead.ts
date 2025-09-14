@@ -75,6 +75,15 @@ export async function submitLead(raw: AnyRecord): Promise<{ ok: boolean; error?:
       meta: source_info,
     });
 
+    // Honeypot pickup (DOM hidden input)
+    try {
+      if (typeof window !== "undefined") {
+        const el = window.document.querySelector("input[name=\"hpt\"]") as HTMLInputElement | null;
+        if (el && el.value) { (raw as any).hpt = el.value; }
+      }
+    } catch {}
+
+
     const row = {
       full_name,
       company_name,
