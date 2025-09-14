@@ -71,3 +71,15 @@ Yes, you can!
 To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
 
 Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+
+
+## Leads Integration
+
+- Submissions use Supabase (public.lead_forms) via an Edge Function.
+- Required env vars (client):
+  - `NEXT_PUBLIC_SUPABASE_URL`
+  - `NEXT_PUBLIC_SUPABASE_ANON_KEY`
+- Honeypot fields: hidden inputs `hpt` and `hp2` are included in forms.
+- Server protections: honeypot drop + light rate limit (3 / 2 min per email).
+- Slack notifications: configure `SLACK_WEBHOOK_URL` in the function secrets.
+- Analytics views in Supabase: `leads_daily`, `leads_by_campaign`, `leads_7d`, `leads_today_by_source`.
