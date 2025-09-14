@@ -5,8 +5,7 @@ import { createClient } from 'https://esm.sh/@supabase/supabase-js@2';
 const SUPABASE_URL = Deno.env.get('SUPABASE_URL')!;
 const SERVICE_ROLE_KEY = Deno.env.get('SUPABASE_SERVICE_ROLE_KEY');
 const ANON_KEY = Deno.env.get('SUPABASE_ANON_KEY');
-const SLACK_WEBHOOK_URL = Deno.env.get('SLACK_WEBHOOK_URL')
-  ?? 'https://hooks.slack.com/services/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';
+const SLACK_WEBHOOK_URL = Deno.env.get('SLACK_WEBHOOK_URL');
 
 function getClient(req: Request) {
   if (SERVICE_ROLE_KEY) {
