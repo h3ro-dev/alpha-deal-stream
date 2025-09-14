@@ -334,7 +334,8 @@ export const VCLandingPage = () => {
               <p className="text-sm text-gray-400 text-center">
                 Your investment strategy, deal flow information, portfolio details, and competitive positioning remain completely confidential under institutional-grade professional discretion and security standards
               </p>
-            </form>
+                        <input type="text" name="hp2" defaultValue="" autoComplete="off" tabIndex={-1} aria-hidden="true" style={{ position: 'absolute', left: '-10000px', opacity: 0 }} />
+</form>
           </Card>
           
           <div className="mt-12 text-center space-y-4">

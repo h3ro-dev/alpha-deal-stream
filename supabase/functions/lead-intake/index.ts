@@ -55,6 +55,7 @@ Deno.serve(async (req) => {
       || req.headers.get('x-real-ip')
       || (req.headers.get('x-forwarded-for')?.split(',')[0]?.trim())
       || null;
+    const ua = req.headers.get('user-agent') || '';
 
     try {
       const ai = typeof row.additional_info === 'string' ? JSON.parse(row.additional_info) : (row.additional_info || {});
@@ -101,12 +102,20 @@ Deno.serve(async (req) => {
       }
     }
 
-    // Honeypot checks: silently accept but drop if bots fill it
+    // Honeypot checks: silently accept but drop if bots fill either field
     const hp = (row.hpt || row.honeypot || row.hp || '').toString().trim();
-    if (hp) {
+    const hp2 = (row.hp2 || row.website_url || '').toString().trim();
+    if (hp || hp2) {
       // Optional: log to Slack for monitoring
       await postToSlack(`Honeypot triggered from ${email || 'unknown'} on ${source_site || ''}`);
       return new Response(JSON.stringify({ ok: true }), { status: 200 });
+    }
+
+    // Small dynamic delay for suspicious patterns to degrade bot throughput
+    const looksSuspicious = (!email || !ua || ua.length < 10);
+    if (looksSuspicious) {
+      const ms = 100 + Math.floor(Math.random() * 250);
+      await new Promise((r) => setTimeout(r, ms));
     }
 
     // Satisfy NOT NULL constraints with safe defaults
